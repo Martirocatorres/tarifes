@@ -564,6 +564,8 @@ body {
   .immo-step { font-size: 15px; }
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('l1Z7VjGNIUQrHiYt1');</script>
 </head>
 <body>
 <div class="wrap">
@@ -699,7 +701,16 @@ body {
       </div>
       <div class="puntual-desc">Una hora per resoldre els teus dubtes financers, revisar la teva cartera o planificar el teu proper moviment. Sense subscripció, sense compromís.</div>
       <div style="margin-top:12px;">
-        <a class="btn-action" href="https://calendly.com/martiniroca/sessio-assessorament-69-h" target="_blank">Reservar sessió d'assessorament 69€/h →</a>
+        <button class="btn-action" onclick="document.getElementById('sessio69-tarifes').style.display=document.getElementById('sessio69-tarifes').style.display==='none'?'block':'none'" style="cursor:pointer;border:none">Sol·licitar sessió d'assessorament 69€/h →</button>
+      </div>
+      <div id="sessio69-tarifes" style="display:none;margin-top:12px;padding:16px;border:1px solid var(--ac);border-radius:10px">
+        <p style="font-size:13px;color:var(--text2);margin-bottom:10px">Deixa'm les teves dades i em posaré en contacte per acordar dia, hora i mètode de pagament.</p>
+        <input type="text" id="t69_nom" placeholder="Nom complet" style="width:100%;padding:9px;margin-bottom:6px;border-radius:8px;border:1px solid #333;background:#1a1a2e;color:#eee;font-size:13px">
+        <input type="email" id="t69_email" placeholder="Email" style="width:100%;padding:9px;margin-bottom:6px;border-radius:8px;border:1px solid #333;background:#1a1a2e;color:#eee;font-size:13px">
+        <input type="tel" id="t69_tel" placeholder="Telèfon" style="width:100%;padding:9px;margin-bottom:6px;border-radius:8px;border:1px solid #333;background:#1a1a2e;color:#eee;font-size:13px">
+        <textarea id="t69_franja" placeholder="Franja horària preferida..." style="width:100%;padding:9px;margin-bottom:10px;border-radius:8px;border:1px solid #333;background:#1a1a2e;color:#eee;font-size:13px;min-height:50px"></textarea>
+        <button onclick="enviarSessio69Tarifes()" style="width:100%;padding:10px;background:var(--ac);color:#111;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer">Enviar sol·licitud →</button>
+        <p id="t69_msg" style="display:none;margin-top:8px;padding:10px;border-radius:8px;text-align:center;font-size:13px"></p>
       </div>
     </div>
 
@@ -722,11 +733,32 @@ body {
         </div>
       </div>
 
-      <a class="btn-immo" href="https://calendly.com/martiniroca/sessio-assessorament-69-h" target="_blank">
+      <a class="btn-immo" href="https://calendly.com/martiniroca/30min" target="_blank">
         Reserva els 20 min gratuïts →
       </a>
     </div>
   </div>
+
+  <script>
+  async function enviarSessio69Tarifes(){
+    const nom=document.getElementById('t69_nom').value.trim();
+    const email=document.getElementById('t69_email').value.trim();
+    const tel=document.getElementById('t69_tel').value.trim();
+    const franja=document.getElementById('t69_franja').value.trim();
+    const msg=document.getElementById('t69_msg');
+    if(!nom||!email||!tel){msg.style.display='block';msg.style.background='#3d1111';msg.style.color='#f88';msg.textContent='Si us plau, omple nom, email i telèfon.';return;}
+    try{
+      await emailjs.send('Fitxa_Clients','template_yxr1z27',{
+        nom:nom, email:email, telefon:tel,
+        message:'SOL·LICITUD SESSIÓ 69€/h\nFranja: '+franja+'\nOrigen: tarifes\nNom: '+nom+'\nEmail: '+email+'\nTel: '+tel
+      });
+      msg.style.display='block';msg.style.background='#113d11';msg.style.color='#8f8';
+      msg.textContent='✓ Rebut! Em posaré en contacte amb tu aviat per acordar la videollamada i el mètode de pagament.';
+      document.getElementById('t69_nom').value='';document.getElementById('t69_email').value='';
+      document.getElementById('t69_tel').value='';document.getElementById('t69_franja').value='';
+    }catch(e){msg.style.display='block';msg.style.background='#3d1111';msg.style.color='#f88';msg.textContent='Error enviant. Prova de nou o escriu a martiniroca@gmail.com';}
+  }
+  </script>
 
   <!-- ── CTA FINAL ── -->
   <div class="cta-bloc">
@@ -739,6 +771,9 @@ body {
 
   <!-- FOOTER -->
   <div class="footer">
-    <p><a href="mailto:martirocatorres@gmail.com" style="color:var(--ac);text-decoration:none">martirocatorres@gmail.com</a> · <a href="tel:+34655927969">655 927 969</a></p>
-    <p class="disclaimer">
-      Les rendibilitats passades no garanteixen rendibili
+    <p><a href="mailto:martiniroca@gmail.com" style="color:var(--ac);text-decoration:none">martiniroca@gmail.com</a> · 655 927 969</p>
+    <p style="margin-top:6px;font-size:11px;color:var(--text3)">© 2026 Martí Roca de Torres · Assessor Financer Independent</p>
+  </div>
+
+</body>
+</html>
