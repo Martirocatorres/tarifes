@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -436,17 +435,17 @@ body {
   gap: 8px;
   width: 100%;
   padding: 16px 20px;
-  background: #1a6b5a;
-  color: #fff;
+  background: var(--ac);
+  color: #111;
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   font-weight: 600;
   border-radius: var(--r);
   text-decoration: none;
   transition: all 0.25s ease;
-  border: 1px solid #1a6b5a;
+  border: 1px solid var(--ac);
 }
-.btn-immo:hover { background: #22917a; border-color: #22917a; box-shadow: 0 4px 20px rgba(34,145,122,0.35); }
+.btn-immo:hover { background: var(--ac2); border-color: var(--ac2); box-shadow: 0 4px 20px rgba(201,168,76,0.3); }
 
 /* ── CTA FINAL ── */
 .cta-bloc {
@@ -490,7 +489,8 @@ body {
 .btn-primary:hover { background: var(--ac2); }
 .cta-top { padding: 24px 24px 16px; }
 .cta-top .cta-sub { margin-bottom: 16px; }
-.test-link { display: inline-block; margin-top: 6px; font-size: 13px; color: var(--text3); text-decoration: underline; text-underline-offset: 3px; }
+.test-line { text-align: center; font-size: 13px; color: var(--text3); margin: 0 0 28px; }
+.test-link { display: inline; font-size: 13px; color: var(--text3); text-decoration: underline; text-underline-offset: 3px; }
 .test-link:hover { color: var(--text2); }
 .btn-secondary {
   display: inline-flex;
@@ -606,7 +606,7 @@ body {
   <div class="cta-bloc cta-top">
     <div class="cta-title">Abans de decidir res, parlem-ne</div>
     <div class="cta-sub">Una trucada gratuïta de 20 minuts, sense compromís. M'expliques la teva situació i et dic com et puc ajudar.</div>
-    <a class="btn-primary" href="https://calendly.com/martiniroca/30min" target="_blank">Reserva la trucada gratuïta de 20 min →</a>
+    <a class="btn-action" href="https://calendly.com/martiniroca/30min" target="_blank">Reserva la trucada gratuïta de 20 min →</a>
   </div>
 
   <!-- ── 1. ESTUDI INICIAL ── -->
@@ -774,7 +774,7 @@ body {
       </div>
 
       <a class="btn-immo" href="https://calendly.com/martiniroca/30min" target="_blank">
-        Reserva els 20 min gratuïts →
+        Explica'm el teu cas (20 min gratuïts) →
       </a>
     </div>
   </div>
@@ -800,13 +800,8 @@ body {
   }
   </script>
 
-  <!-- ── CTA FINAL ── -->
-  <div class="cta-bloc">
-    <div class="cta-title">Encara tens dubtes?</div>
-    <div class="cta-sub">Parlem 20 minuts, sense compromís.</div>
-    <a class="btn-primary" href="https://calendly.com/martiniroca/30min" target="_blank">Reserva la trucada gratuïta →</a>
-    <a class="test-link" href="https://martirocatorres.github.io/assessor" target="_blank">O, si ho prefereixes, fes el test financer online gratuït (5 min) →</a>
-  </div>
+  <!-- ── TEST ── -->
+  <p class="test-line">Prefereixes començar pel teu compte? <a class="test-link" href="https://martirocatorres.github.io/assessor" target="_blank">Fes el test financer online gratuït (5 min) →</a></p>
 
   <!-- FOOTER -->
   <div class="footer">
